@@ -63,7 +63,7 @@ var makeHashTable = function() {
     
     for (var i = 0; i < bucket.length; i++) {
       var tuple = bucket[i];
-      if (tuple[0] === key) {
+      if (tuple[0] === k) {
         tuple[1] = v;
         keyExists = true;
       }
@@ -114,7 +114,7 @@ var makeHashTable = function() {
 
    var bucket = storage[index];
    for (var i = 0; i < bucket.length; i++) {    
-    if (bucket[i][0] === key) {
+    if (bucket[i][0] === k) {
       bucket.splice(i, 1);
     }
     return bucket[i][1];
