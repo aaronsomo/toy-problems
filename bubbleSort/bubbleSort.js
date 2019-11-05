@@ -35,4 +35,34 @@
 
 var bubbleSort = function(array) {
   // Your code here.
+  /*
+  things to keep in mind: we will most likely be iterating two times
+    first time to iterate over the entire length of the array
+    second time to iterate over two adjacent indices within the array
+
+  maybe create a storage array for the sorted result
+  iterate over the length of the input array
+    inside the input array, iterate over length of the array
+      position the numbers in a way that the values are ascending numerical order
+      if index[0] is greater than index[1]
+        swap positions (may need to create temporary storage variables)
+          increase index count and compare next two indices (for example index[1] and index[2]) until end of array
+  return array
+
+  */
+
+  for(var i = 0; i < array.length; i++) {
+    for (var j = 0; j < array.length; j++) {
+      var tempOne = array[j];
+      var tempTwo = array[j + 1];
+
+      if (tempOne > tempTwo) {
+        array[j] = tempTwo;
+        array[j +1] = tempOne;
+      }
+    }
+  }
+return array;
 };
+
+// bubbleSort([2, 1, 3]); // yields [1, 2, 3]
