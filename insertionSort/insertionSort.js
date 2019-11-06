@@ -48,5 +48,40 @@ var testingTransform = function(array) {
 var insertionSort = function(array
 ) {
   // Your code goes here. Feel free to add helper functions if needed.
+  /*
+  things to keep in mind: we are iterating over an array of OBJECTS
+    objects may contain multiple key:value pairs ie: {value: 10} {value: 5, order: 1} {value:5, order: 2}
+  sort the list in ascending values, while also maintaining ascending ascending ordered values
+
+  given input is type array
+    iterate over the array
+      array contains objects, we want to compare the value of the key:value pair inside each object
+      iterate over array again to compare item values
+      at index[i] of array, we need to look at index[i]'s value
+        if index[i]'s value is greater than the next item
+          set the item to a temporary storage
+          set current item to next item
+          set the next item to the temporary storage
+          ... continue through list
+      return the sorted list
+  */
+
+  for (var i = 0; i < array.length; i++) {
+    // for (var key in array[i]) {
+      // prior to any iteration, we are going to have to temporarily store values to swap
+      var temp;
+      for (var j = 0; j < array.length; j++ ) {
+        // if (array[j] < array.length - 1) {
+        // we're going to need to compare values and swap
+          if (array[j].value > array[j + 1].value) {
+            temp = array[j];
+            array[j] = array[j + 1];
+            array[j + 1] = temp;
+          }
+        // }
+      }
+    // }
+  }
   return array;
 };
+
