@@ -95,8 +95,69 @@
  *
  */
 
+/*
+things to keep in mind: seems like every element is separated into their own array
+combines two adjacent arrays and sorts them
+continues combining adjacent arrays and sorts values
 
+split the array until the elements are their own individual arrays
+  find mid-point and split the array
+    continue until array consists of individual arrays with one value each
+create a new array
+compare each value of the input array with it's adjacent value
+  push values into new array in the order of smallest to largest
+
+
+*/
 
 var mergeSort = function(array) {
   // Your code here.
+
+  // find the middle element
+  var middle = Math.floor(arr.length / 2);
+  var splitLeft = arr.slice(0, middle);
+  var splitRight = arr.slice(middle, arr.length);
+
+  // continue splitting the array until they're individual arrays
+  if (splitLeft.length > 1) {
+    splitLeft = mergeSort(splitLeft);
+  }
+  
+  if (right.length > 1) {
+    splitRight = mergeSort(splitRight);
+  }
+
+  var newArray = [];
+
+  // after input array is finally split, we want to merge them together with adjacent values
+  while (splitLeft.length > 0 && splitRight > 0) {
+    // create a storage value to push into new array
+    var value = 0;
+
+    // we want to compare adjacent values and push the one that is smaller into the new array
+    if (splitleft < splitRight) {
+      value = splitLeft;
+    } else {
+      value = splitRight;
+    }
+
+    newArray.push(value);
+  }
+  // begin combining the left and right arrays
+  newArray = newArray.concat(splitLeft);
+
+  // out of time
+
+  return newArray;
+
 };
+
+
+
+
+
+
+
+
+
+
