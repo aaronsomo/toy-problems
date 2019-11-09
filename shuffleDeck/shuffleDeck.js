@@ -31,9 +31,44 @@
  *   See https://www.dartmouth.edu/~chance/teaching_aids/books_articles/Mann.pdf .
  */
 
+
+/*
+things to keep in mind: working with two arrays; each suit must be assigned to a value
+four different suits, thirteen different values = 52 possible combinations
+we will most likely need a randomizer to place suit:value pairs in a random order
+orderedDeck() ALREADY EXISTS; we just have to randomize the deck
+
+iterate over the orderedDeck
+  create a randomizer to randomize the placement of the cards
+    assign each card to an index with the randomizer
+  return deck
+
+*/
+
 var shuffleDeck = function(deck) {
   // Your code here
+
+  // this for-loop places cards in exact same order every invocation
+  // iterate over the `orderedDeck`
+  // for (var i = 0; i < deck.length; i++) {
+  //   // create randomizer for the index of each card in `orderedDeck`
+  //   var index = Math.floor(Math.random() * deck.length);
+  //   // declare variable for cards in randomized index
+  //   var cardPlace = deck[index];
+  //   // assign card position to card placement
+  //   deck[index] = cardPlace;
+  // }
+
+  for (var i = 0; i < deck.length; i++) {
+    var index = Math.floor(Math.random() * deck.length);
+    var swap = Math.floor(Math.random() * deck.length); // create a second randomizer to randomize the order of card placement
+    var cardPlace = deck[swap]; // cardPlace = deck[index] was always giving it the same placement, use second randomizer to place cards
+    deck[index] = cardPlace; // assign the card placement to a the newly randomized position
+  }
+
 };
+
+/******* GIVEN *******/
 
 // Ordered deck generator provided for your testing convenience
 // (You may alter this function, but an unaltered copy will be used for tests.)
@@ -50,3 +85,4 @@ var orderedDeck = function() {
 
   return deck;
 };
+
