@@ -65,7 +65,7 @@ var shuffleDeck = function(deck) {
     var cardPlace = deck[swap]; // cardPlace = deck[index] was always giving it the same placement, use second randomizer to place cards
     deck[index] = cardPlace; // assign the card placement to a the newly randomized position
   }
-
+  return deck; // did not return deck from snippets...............
 };
 
 /******* GIVEN *******/
