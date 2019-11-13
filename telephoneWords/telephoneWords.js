@@ -79,27 +79,27 @@ var telephoneWords = function(digitString) {
   var combo4 = phoneDigitsToLetters[Number(digitString.charAt(3))];
 
   for (var i = 0; i < 4; i++) {
+    var word = combo1.charAt(i);
+    if (word.length === 4) {
+      results.push(word);
+    }
     for (var j = 0; j < 4; j++) {
+      var word2 = combo1.charAt(i) + combo2.charAt(j);
+      if (word2.length === 4) {
+        results.push(word2);
+      }
       for (var k = 0; k < 4; k++) {
+        var word3 = combo1.charAt(i) + combo2.charAt(j) + combo3.charAt(k);
+        if (word3.length === 3) {
+          results.push(word3);
+        }
         for (var l = 0; l < 4; l++) {
           var word4 = combo1.charAt(i) + combo2.charAt(j) + combo3.charAt(k) +  combo4.charAt(l);
           if (word4.length === 4) {
             results.push(word4);
           }
         }
-        var word3 = combo1.charAt(i) + combo2.charAt(j) + combo3.charAt(k);
-        if (word3.length === 3) {
-          results.push(word3);
-        }
       }
-      var word2 = combo1.charAt(i) + combo2.charAt(j);
-      if (word2.length === 4) {
-        results.push(word2);
-      }
-    }
-    var word = combo1.charAt(i);
-    if (word.length === 4) {
-      results.push(word);
     }
   }
 
