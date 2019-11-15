@@ -25,7 +25,33 @@ makeChange(2) === 2
 */
 
 var makeChange = function(total) {
+  var count = 0;
+  var sum = 0;
+  
+  function helper(sum, coins) {
+    if(sum === total) {
+      // console.log('total: ', total);
+      // console.log('done');
+      count++
+    } else if (sum > total) {
+      // console.log('you went over')
+      makeChange(total);
+    } else if (sum < total) {
+      // console.log('not done');
+      for (var i = 0; i < coins.length; i++) {
+        // coins.splice(i, 1);
+        sum = sum + coins[i];
+        if (sum <= total) {
+          // helper(sum, coins[i]);
+          helper(sum, coins);
+        }
+      }
+    }
+  }
+  helper(sum, coins);
+  return count;
 
 };
 
+console.log(makeChange(10));
 
