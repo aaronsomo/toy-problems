@@ -30,12 +30,44 @@
  * Basic tree that stores a value.
  */
 
+ /*
+ things to keep in mind: returns a flattened array of node values of the tree
+ 
+create a storage array for the filtered values
+most likely need helper function that can recursively apply filter function to node values
+if filter at node's value is true
+	push node value into storage array
+	if current node has any children
+		iterate through children
+			recurse helper function
+
+base case???
+*/
+
 var Tree = function(value) {
   this.value = value;
   this.children = [];
 };
 
 Tree.prototype.DFSelect = function(filter) {
+	var filteredArray = [];
+
+  var helper = function(node) {
+		if (filter(node.value)) {
+			filteredArray.push(node.value)
+		}
+
+		if (node.children) {
+			for(var i = 0; i < node.children.length; i++) {
+				helper(node.children[i]);
+			}
+		}
+		return;
+	}
+	
+  helper(this);
+	return filteredArray;
+	
 };
 
 
