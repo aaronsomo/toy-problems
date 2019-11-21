@@ -32,6 +32,21 @@
  * Basic tree that stores a value.
  */
 
+/*
+things to keep in mind: should traverse down the tree, grab a count of the leaf,
+backtrack up the tree, and down the next child, if any
+
+create a count storage variable to increase when a leaf is found
+will most likely be using a helper function to recurse
+iterate through node and children
+  check if child node has a length
+    if length = 0
+      count++
+    iterate over current node's children
+      apply helper function to children (recursive case)
+  return count
+
+*/
 var Tree = function(value) {
   this.value = value;
   this.children = [];
@@ -39,6 +54,22 @@ var Tree = function(value) {
 
 Tree.prototype.countLeaves = function () {
   // TODO: implement me!
+
+  var count = 0;
+  // var node = new Tree();
+
+  var helper = function(node) {
+		if ((!node.children.length) || (node.children.length === 0)) {
+			count++;
+		}
+	  for (var i = 0; i < node.children.length; i++) {
+		  helper(node.children[i]);
+	  }
+	
+	}
+	helper(this);
+  return count;
+  
 };
 
 /**
