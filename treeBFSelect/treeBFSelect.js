@@ -27,6 +27,23 @@
   */
 
 /*
+things to keep in mind: traverse through an entire level of nodes before
+traversing down subsequent children nodes
+
+                  1
+
+           2              3
+
+      4       5          6        7
+
+  8     9                           10      
+
+check if current node has children
+if children
+  apply filter function to children
+*/
+
+/*
  * Basic tree that stores a value.
  */
 
@@ -39,6 +56,26 @@ var Tree = function(value) {
 
 Tree.prototype.BFSelect = function(filter) {
   // return an array of values for which the function filter(value, depth) returns true
+  var filtered = []
+
+  var node = new Tree()
+
+  var helper = function(filter, node) {
+    if (node.children) {
+      for (var i = 0; i < node.length; i++) { // need to iterate the next child and not move down the tree
+        if (filter(node.children[i])) {
+          filtered.push(node.children[i])
+        }
+      }
+    }
+  }
+
+  helper(filter, node)
+  return filtered
+  // out of time
+  // when attempting again, like depth first approach,
+  // look into creating a depth counter and maintain the depth
+  // prior to traversing down the tree
 };
 
 /**
