@@ -37,6 +37,35 @@
  *
  */
 
+ /*
+ things to keep in mind: async function
+ waits until all callbacks are returned before invoking a callback on results
+ results are stored in an array
+
+ I: any number of tasks/functions to execute
+ O: returns the results of each of the callback functions in the order that they are executed, regardless of setTimeout
+ C:
+ E:
+
+
+find a way to track the number of tasks asyncMap() is supposed to run
+maybe keep a counter variable that increases with every task
+
+create helper function that iterates through the results of the tasks and stores them in a final array
+
+ */
+
 
 var asyncMap = function(tasks, callback) {
+  var finalResults = [];
+  var numTasks = 0;
+  var helper = function(result) {
+    for (var i = 0; i < tasks.length; i++) {
+      finalResults[i] = result;
+    }
+    numTasks = numTasks + 1;
+    // unfinished, continue progress when free
+  }
+
+  helper(result);
 };
