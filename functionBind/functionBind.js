@@ -16,16 +16,33 @@
  *
  * example 2:
  *
- * var func = function(a, b){ return a + b };
+ * var func = function(a, b){
+ *    return a + b 
+ * };
+ * 
  * var boundFunc = bind(func, null, 'foo');
  * var result = boundFunc('bar');
  * result === 'foobar'; // true
  *
 */
 
-var bind = function(
-) {
+
+/*
+things to keep in mind: write bind's function definition
+
+bind takes in a function and a context in which the function parameter will be operating in
+able to use call() or apply()?
+bind is a function wrapper for both of the above
+
+return function using apply() with arguments
+
+*/
+
+var bind = function(func, context) {
   // TODO: Your code here
+
+  return func.apply(context, arguments);
+
 };
 
 /*
@@ -56,4 +73,12 @@ var bind = function(
 Function.prototype.bind = function(
 ) {
   // TODO: Your code here
+  // declare a function
+  // declare a variable arguments for context
+  // apply function to arguments
+
+  var func = this;
+  // var [context, arguments] = arguments;
+  return func.apply(context, arguments);
+
 };
