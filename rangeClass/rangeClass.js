@@ -38,6 +38,24 @@
  * evenNumbers.includes(2) should be true, evenNumbers.includes(3) should be false
  */
 
+/*
+things to keep in mind:
+range can count backwards
+range should use constant space, ie, we cannot create extra variables and the size of the input should not change
+
+I: (2, 8, 2)
+O: 2, 4, 6, 8
+C: constant space
+E: can count backwards
+
+we can try a while loop
+if start < end
+  while start < end
+    start = start + step
+
+
+*/
+
 
 var Range = function(start, end, step) {
 };
