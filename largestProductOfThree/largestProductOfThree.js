@@ -28,7 +28,9 @@ return value
 var largestProductOfThree = function(array) {
   // TODO: everything
   // find largest three numbers
-  var sortedArray = array.sort();
+  var sortedArray = array.sort((a, b) => {
+    return a - b;
+  });
   // console.log(sorted);
   var greatestThree = sortedArray.slice(
     sortedArray.length - 3,
