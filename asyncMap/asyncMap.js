@@ -37,7 +37,7 @@
  *
  */
 
- /*
+/*
  things to keep in mind: async function
  waits until all callbacks are returned before invoking a callback on results
  results are stored in an array
@@ -55,17 +55,39 @@ create helper function that iterates through the results of the tasks and stores
 
  */
 
+// var asyncMap = function(tasks, callback) {
+//   var finalResults = [];
+//   var numTasks = 0;
+//   for (var i = 0; i < tasks.length; i++) {
+
+//     (function (i) {
+
+//       tasks[i](function (val) {
+//         finalResults[i] = val;
+//         numTasks = numTasks + 1;
+
+//         if(resultsCount === tasks.length){
+//           callback(resultsArray);
+//         }
+
+//       });
+
+//     })(i);
+
+//   }
+// };
 
 var asyncMap = function(tasks, callback) {
   var finalResults = [];
   var numTasks = 0;
-  var helper = function(result) {
-    for (var i = 0; i < tasks.length; i++) {
-      finalResults[i] = result;
-    }
-    numTasks = numTasks + 1;
-    // unfinished, continue progress when free
-  }
+  tasks.forEach((asyncTask, index) => {
+    asyncTask(data => {
+      finalResults[index] = data;
+      numTasks = numTasks + 1;
 
-  helper(result);
+      if (numTasks === tasks.length) {
+        callback(finalResults);
+      }
+    });
+  });
 };
