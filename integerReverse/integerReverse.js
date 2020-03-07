@@ -21,6 +21,8 @@ find a way to isolate each number
 
 */
 
+// DO NOT CONVERT TO STRING
+
 function reverseInteger(number) {
   // TODO: Implement this function!
 
@@ -32,5 +34,17 @@ function reverseInteger(number) {
     return 0;
   }
 
-  var reverse = number;
+  // var reverse = number;
+  var reverse = 0;
+
+  while (number !== 0) {
+    var endDigit = number % 10;
+
+    reverse = reverse * 10;
+    reverse = reverse + endDigit;
+    number = number - endDigit;
+    number = number / 10;
+  }
+
+  return reverse;
 }
