@@ -10,6 +10,21 @@ var primeTester = function(n) {
     return false;
   }
   // TODO: return true if n is prime, false otherwise
+  // create a variable that divides by 2 to see if prime
+  let divisor = 2;
+  // while divisor is less than n
+  while (divisor < n) {
+    // check if there is a remainder for n / divisor
+    if (n % divisor) {
+      // if true, increment divisor by one
+      divisor++;
+    } else {
+      // if false, return false
+      return false;
+    }
+  }
+  // after loop completes, return true
+  return true;
 };
 
 /* Extra credit: Write a function that generates a list of all prime numbers
@@ -18,7 +33,17 @@ var primeTester = function(n) {
  * saucy, check out the Sieve of Atkin.)
  */
 
-var primeSieve = function (start, end) {
+var primeSieve = function(start, end) {
+  // set result to empty array
+  let result = [];
+  // iterate from start to end
+  for (var i = start; i <= end; i++) {
+    // test if current number is prime
+    if (primeTester(i)) {
+      // if true, push to result
+      result.push(i);
+    }
+  }
+  // return result
+  return result;
 };
-
-
